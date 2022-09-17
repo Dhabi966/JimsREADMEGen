@@ -4,7 +4,8 @@ const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
-const questions = [
+inquirer
+.prompt ([
     {
         type: 'input',
         message: 'What is your GitHub username?',
@@ -27,7 +28,7 @@ const questions = [
     },
     {
         type: 'input',
-        message: 'Enter installation instructions',
+        message: 'Enter install instructions',
         name: 'install',    
     },
     {
@@ -51,13 +52,13 @@ const questions = [
         choices: ['Mozilla Public License 2.0', 'Apache License 2.0', 'MIT License'],
         name: 'license'
     }
-];
+])
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
     fs.writeFile('Generated-README.md', data, err =>
     err ? console.error(err) : 
-    console.log('Success! Your README file has been generated'),
+    console.log('Success! Your README file has been generated.'),
 
 // TODO: Create a function to initialize app
 function init() {
