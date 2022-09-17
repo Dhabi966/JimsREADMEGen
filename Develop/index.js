@@ -1,7 +1,8 @@
 // TODO: Include packages needed for this application
 const fs = require('fs');
 const inquirer = require('inquirer');
-const generateMarkdown = require('./utils/generateMarkdown');
+const util = require('util')
+const generateReadme = require('./utils/generateReadme');
 
 // TODO: Create an array of questions for user input
 inquirer
@@ -28,7 +29,7 @@ inquirer
     },
     {
         type: 'input',
-        message: 'Enter install instructions',
+        message: 'Describe install instructions',
         name: 'install',    
     },
     {
@@ -50,7 +51,7 @@ inquirer
         type: 'list',
         message: "Choose a license for your project.",
         choices: ['Mozilla Public License 2.0', 'Apache License 2.0', 'MIT License'],
-        name: 'license'
+        name: 'choices'
     }
 ])
 
@@ -63,12 +64,11 @@ function writeToFile(fileName, data) {
 // TODO: Create a function to initialize app
 function init() {
     return inquirer.prompt(questions).then((data) => {
-       writeToFile('Generated-README.md', generateMarkdown(data));
+       writeToFile('Generated-README.md', generateReadme(data));
 });
 
 })
 
 }
 // Function call to initialize app
-init();
-    
+
