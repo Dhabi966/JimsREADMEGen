@@ -2,16 +2,11 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 const util = require('util')
-const generateReadme = require('./utils/generateReadme');
+const generateMarkdown = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
 inquirer
 .prompt ([
-    {
-        type: 'input',
-        message: 'What is your GitHub username?',
-        name: 'username',
-    },  
     {
         type: 'input',
         message: 'What is your GitHub repo?',
@@ -29,17 +24,17 @@ inquirer
     },
     {
         type: 'input',
-        message: 'Describe install instructions',
+        message: 'Provide command to install the project',
         name: 'install',    
     },
     {
         type: 'input',
-        message: 'Enter usage information',
+        message: 'Provide instructions to use the project',
         name: 'usage',
     },
     {
         type: 'input',
-        message: 'Enter contribution guidelines',
+        message: 'Provide guidelines on how someone can contribute to project',
         name: 'contribution',
     },
     {
@@ -52,8 +47,18 @@ inquirer
         message: "Choose a license for your project.",
         choices: ['Mozilla Public License 2.0', 'Apache License 2.0', 'MIT License'],
         name: 'choices'
-    }
-]);
+    },
+    {
+        type: 'input',
+        message: 'What is your GitHub username?',
+        name: 'username',
+    },  
+    {
+        type: 'input',
+        message: 'Enter your email address',
+        name: 'email',
+    },  
+])
 
 
 // TODO: Create a function to write README file
@@ -65,7 +70,7 @@ function writeToFile(fileName, data) {
 // TODO: Create a function to initialize app
 function init() {
     return inquirer.prompt(questions).then((data) => {
-       writeToFile('Generated-README.md', generateReadme(data));
+       writeToFile('Generated-README.md', generateMarkdown(data));
 });
 
 })
