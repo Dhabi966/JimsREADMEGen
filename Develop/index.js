@@ -2,11 +2,15 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 const util = require('util')
-const generateMarkdown = require('./utils/generateMarkdown');
+var generateMarkdown = require('./utils/generateMarkdown');
 
+// TODO: Create a function to write README file
+function writeToFile(fileName, data) {
+}
+// TODO: Create a function to initialize app
+function init() {
 // TODO: Create an array of questions for user input
-inquirer
-.prompt ([
+inquirer.prompt ([
     {
         type: 'input',
         message: 'What is your GitHub repo?',
@@ -58,22 +62,10 @@ inquirer
         message: 'Enter your email address',
         name: 'email',
     },  
-])
-
-
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {
-    fs.writeFile('Generated-README.md', data, err =>
-    err ? console.error(err) : 
-    console.log('Success! Your README file has been generated.'),
-
-// TODO: Create a function to initialize app
-function init() {
-    return inquirer.prompt(questions).then((data) => {
-       writeToFile('Generated-README.md', generateMarkdown(data));
-});
-
-})
-
-}
+]).then(function(data) {
+    console.log('Your README file is being generated...');
+    writeToFile('README.md', generateMarkdown({...data}))
+    console.log('Check your output folder for your new README file!');
+})};
 // Function call to initialize app
+init();
