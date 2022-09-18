@@ -53,7 +53,8 @@ inquirer
         choices: ['Mozilla Public License 2.0', 'Apache License 2.0', 'MIT License'],
         name: 'choices'
     }
-])
+]);
+
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
@@ -71,4 +72,3 @@ function init() {
 
 }
 // Function call to initialize app
-
