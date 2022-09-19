@@ -8,9 +8,6 @@ function renderLicenseBadge(license) {
   // If there is no license, return an empty string
   function renderLicenseLink(license) {
     return selectLicense(license).link;
-
-
-
   }
   
   // TODO: Create a function that returns the license section of README
@@ -33,6 +30,7 @@ function renderLicenseBadge(license) {
   }
   return licenseText;
   }
+  // adding links and badges to be shown at top of readme file
   function selectLicense(license) {
     let licenseInfo = {name: '', link:'', badge:''};
     
@@ -63,9 +61,12 @@ function renderLicenseBadge(license) {
       return licenseInfo;
     }
 // TODO: Create a function to generate markdown for README
+// Adding table of contents section and a place for the license badge next
+//to the project title
     function generateMarkdown(data) {
-      return `# ${data.title} ![License Badge](${renderLicenseBadge(data.license)})
-  
+      return `# ${data.title}![License Badge](${renderLicenseBadge(data.license)})
+
+
  ## Table of Contents
 
 - [Description](#description)
@@ -89,7 +90,6 @@ ${data.usage}
 ## License 
 ${renderLicenseSection(data.license)}
 ${renderLicenseLink(data.license)}
-
 
 ## Contributions
 ${data.contributions}

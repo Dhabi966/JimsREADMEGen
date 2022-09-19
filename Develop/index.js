@@ -73,7 +73,7 @@ function writeToFile(fileName, data) {
     .then(function (data) {
       console.log("Your README file is being generated...");
       writeToFile("sampleREADME.md", generateMarkdown({ ...data }));
-      console.log("Check your GitHub repo for your new README file!");
+      console.log("Check the Develop folder for your new README file!");
     });
   }
 
