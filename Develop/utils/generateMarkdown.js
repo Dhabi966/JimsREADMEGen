@@ -1,10 +1,70 @@
-// TODO: Create a function to generate markdown for README
-function generateMarkdown(data) {
-  return `# ${data.title}     
+// TODO: Create a function that returns a license badge based on which license is passed in
+// If there is no license, return an empty string
+function renderLicenseBadge(license) {
+  return selectLicense(license).badge;
+  }
   
-<a href="https://img.shields.io/badge/License-${data.license[0]}-brightgreen">
-<img src="https://img.shields.io/badge/License-${data.license[0]}-brightgreen"></a>
+  // TODO: Create a function that returns the license link
+  // If there is no license, return an empty string
+  function renderLicenseLink(license) {
+    return selectLicense(license).link;
 
+
+
+  }
+  
+  // TODO: Create a function that returns the license section of README
+  // If there is no license, return an empty string
+  function renderLicenseSection(license){ 
+  
+  let licenseText;
+  
+  if (license != 'No License'){
+    licenseText=`
+  
+  This software/code is licensed under the ${selectLicense(license).name}. To use this software/code you must agree to follow and comply the License. A copy of the License can be found at:
+  
+  `
+  }
+  
+  else{
+    licenseText='Not licensed.';
+  
+  }
+  return licenseText;
+  }
+  function selectLicense(license) {
+    let licenseInfo = {name: '', link:'', badge:''};
+    
+      switch(license){
+        case 'Mozilla Public License 2.0':
+          licenseInfo.name = 'Mozilla 2.0';
+          licenseInfo.link = 'https://www.mozilla.org/en-US/MPL/2.0/';
+          licenseInfo.badge = "https://img.shields.io/badge/License-Mozilla%20Public%20License%202.0-orange";
+        break;
+        
+        case 'Apache License 2.0':
+          licenseInfo.name = 'Apache License 2.0';
+          licenseInfo.link = 'https://www.apache.org/licenses/LICENSE-2.0.txt';
+          licenseInfo.badge = "https://img.shields.io/badge/License-Apache%20License%202.0-red";
+        break;
+        
+        case 'MIT License':
+          licenseInfo.name = 'MIT License';
+          licenseInfo.link = 'https://www.mit.edu/~amini/LICENSE.md';
+          licenseInfo.badge = "https://img.shields.io/badge/License-MIT%20License-blue";
+        break;
+    
+        default:
+          licenseInfo.name = ''
+          licenseInfo.link = ''
+          licenseInfo.badge = "https://img.shields.io/badge/License-Not%20licensed-lightgrey";
+      }
+      return licenseInfo;
+    }
+// TODO: Create a function to generate markdown for README
+    function generateMarkdown(data) {
+      return `# ${data.title} ![License Badge](${renderLicenseBadge(data.license)})
   
  ## Table of Contents
 
@@ -24,10 +84,12 @@ ${data.description}
 ${data.installation}
 
 ## Usage
-${data.usage}
+${data.usage}  
 
 ## License 
-${data.license}
+${renderLicenseSection(data.license)}
+${renderLicenseLink(data.license)}
+
 
 ## Contributions
 ${data.contributions}
@@ -36,60 +98,10 @@ ${data.contributions}
 ${data.tests}
 
 ## Questions
-- Github: [Github Profile](https://github.com/${data.username})
-- Email: ${data.email}`;
-}
+***
+You can find additional projects on my github page: https://github.com/${data.username}.
+If you have any questions please contact me at my E-Mail address: ${data.email}.
 
-// TODO: Create a function that returns a license badge
-//based on which license is passed in
-function renderLicenseBadge(license) {
-  if (license === "MIT") {
-    return `# license
-  [![License: MIT](https://img.shields.io/badge/License-MIT-green)]`;
-  }
-  if (license === "Apache 2.0") {
-  return `# license
-  [![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue)]`;
-}
-  if (license === "Mozilla 2.0") {
-  return `# license
-     [![License: Mozilla 2.0](https://img.shields.io/badge/license-Mozilla%202.0-red)]`;
-}
-if (license === "None") {
-  return "";
-}
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {
-  if (license === "MIT") {
-    return `# license
-     [![License: MIT](https://opensource.org/licenses/MIT)]`;
-  }
-}
-if (license === "Apache 2.0") {
-  return `# license
-     [![License: Apache 2.0](https://opensource.org/licenses/Apache-2.0)]`;
-}
-if (license === "Mozilla 2.0") {
-  return `# license
-     [![License: Mozilla 2.0](https://opensource.org/licenses/MPL-2.0)]`;
-}
-if (license === "None") {
-  return "";
-}
-
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {
-  if (license === "None") {
-    return ""
-  }
-
-  function renderLicenseBadge(license) {
-    if (license !== "None") {
-      return license;
-    }
-  }
-}}
+`;}
 
 module.exports = generateMarkdown;
