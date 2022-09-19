@@ -29,5 +29,5 @@ THEN I am taken to the corresponding section of the README
 ## User Flow Video
 https://drive.google.com/file/d/1DMXtBUvBf283gb2pxBO_1FiX8nYrr9hL/view
 
-## Screenshot
+## Sample README Screenshot
 ![image](https://user-images.githubusercontent.com/108851005/190952773-010494e9-3ea0-40a3-8c7d-cdb1d2d08525.png)
