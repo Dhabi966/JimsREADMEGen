@@ -1,6 +1,6 @@
 ## User Story
 
-
+```
 AS A developer
 I WANT a README generator
 SO THAT I can quickly create a professional README for a new project
@@ -25,6 +25,7 @@ THEN this is added to the section of the README entitled Questions, with instruc
 WHEN I click on the links in the Table of Contents
 THEN I am taken to the corresponding section of the README
 
+```
 
 ## User Flow Video
 https://drive.google.com/file/d/1crc9Qk3HscSVSZd4mkpaB0B9rI6WSqL8/view
