@@ -30,7 +30,6 @@ THEN I am taken to the corresponding section of the README
 ## User Flow Video
 https://drive.google.com/file/d/1crc9Qk3HscSVSZd4mkpaB0B9rI6WSqL8/view
 ```
-```
 ## Screenshot
 ```
 
